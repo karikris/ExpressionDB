@@ -1,0 +1,22 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
+    "editor.formatOnSave": true,
+    "[sql]": {
+        "editor.defaultFormatter": "adpyke.vscode-sql-formatter",
+        "editor.formatOnSave": true
+    },
+    "sql-formatter.dialect": "postgresql",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "database": "expressiondb",
+            "username": "expressiondb",
+            "password": "supersecret",
+            "name": "ExpressionDB"
+        }
+    ]
+}

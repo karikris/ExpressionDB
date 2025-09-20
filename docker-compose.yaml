@@ -1,0 +1,67 @@
+services:
+  db:
+    image: postgres:16
+    container_name: expressiondb-pg
+    restart: unless-stopped
+
+    ports:
+      - "5432:5432"
+
+    environment:
+      POSTGRES_DB: expressiondb
+      POSTGRES_USER: expressiondb
+      POSTGRES_PASSWORD: supersecret
+      TZ: Australia/Melbourne
+      POSTGRES_INITDB_ARGS: "--data-checksums --encoding=UTF8 --locale=en_US.UTF-8"
+
+    volumes:
+      - expressiondb:/var/lib/postgresql/data
+
+    command:
+      - postgres
+      - -c
+      - shared_buffers=16GB
+      - -c
+      - effective_cache_size=64GB
+      - -c
+      - work_mem=512MB
+      - -c
+      - maintenance_work_mem=4GB
+      - -c
+      - wal_compression=on
+      - -c
+      - max_wal_size=16GB
+      - -c
+      - checkpoint_completion_target=0.9
+      - -c
+      - random_page_cost=1.1
+      - -c
+      - effective_io_concurrency=200
+      - -c
+      - max_connections=200
+      - -c
+      - shared_preload_libraries=pg_stat_statements
+      - -c
+      - pg_stat_statements.max=10000
+      - -c
+      - pg_stat_statements.track=all
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+volumes:
+  expressiondb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: "C:\\ExpressionDB\\data"

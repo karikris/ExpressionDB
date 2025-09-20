@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python (latest, .venv)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "python": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python (3.9, .venv39)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "python": "${workspaceFolder}\\.venv39\\Scripts\\python.exe",
+            "console": "integratedTerminal"
+        }
+    ]
+}
