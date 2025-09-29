@@ -9,7 +9,7 @@ description = "ExpressionDB tooling and tests"
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [{ name = "ExpressionDB" }]
-dependencies = []  # add runtime deps here when you have them
+dependencies = []  # add runtime deps when you have them
 
 [project.optional-dependencies]
 test = [
@@ -29,4 +29,3 @@ exclude = ["tests*", "docs*", "examples*"]
 [tool.pytest.ini_options]
 addopts = "-q"
 pythonpath = ["src"]
-
