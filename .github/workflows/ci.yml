@@ -23,10 +23,14 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - run: python -m pip install -U pip
-      - run: pip install -e .[test]
+      - name: Upgrade pip
+        run: python -m pip install -U pip
 
-      - run: pytest -q
+      - name: Install package (test extras)
+        run: pip install -e .[test]
+
+      - name: Run unit tests
+        run: pytest -q
 
   pg-tests:
     runs-on: ubuntu-latest
@@ -52,7 +56,13 @@ jobs:
         with:
           python-version: "3.13"
 
-      - run: python -m pip install -U pip
-      - run: pip install -e .[test,pg]
+      - name: Upgrade pip
+        run: python -m pip install -U pip
 
-      - name:
+      - name: Install package (test + pg extras)
+        run: pip install -e .[test,pg]
+
+      - name: Run DB tests
+        run: pytest -q
+        env:
+          DATABASE_URL: postgresql://expressiondb:supersecret@localhost:5432/expressiondb
