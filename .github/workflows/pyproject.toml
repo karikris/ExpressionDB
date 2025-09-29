@@ -5,27 +5,8 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "expressiondb"
 version = "0.1.0"
-description = "ExpressionDB tooling and tests"
-readme = "README.md"
 requires-python = ">=3.9"
-authors = [{ name = "ExpressionDB" }]
-dependencies = []  # add runtime deps when you have them
 
 [project.optional-dependencies]
-test = [
-  "pytest>=8.2"
-]
-pg = [
-  "psycopg[binary]>=3.1"
-]
-
-[tool.setuptools]
-package-dir = {"" = "src"}
-
-[tool.setuptools.packages.find]
-where = ["src"]
-exclude = ["tests*", "docs*", "examples*"]
-
-[tool.pytest.ini_options]
-addopts = "-q"
-pythonpath = ["src"]
+test = ["pytest>=8.2"]
+pg   = ["psycopg[binary]>=3.1"]
