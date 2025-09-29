@@ -1,29 +1,32 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools>=69", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "expressiondb"
 version = "0.1.0"
-description = "CI scaffold and tests for ExpressionDB"
+description = "ExpressionDB tooling and tests"
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [{ name = "ExpressionDB" }]
-
-# Base (runtime) deps for your package go here if you have any.
-# For now we keep runtime empty and use optional groups for tests/DB.
-dependencies = []
+dependencies = []  # add runtime deps here when you have them
 
 [project.optional-dependencies]
-# used by the "test" job
 test = [
   "pytest>=8.2"
 ]
-# used by the "pg-tests" job (psycopg 3 with prebuilt wheels)
 pg = [
   "psycopg[binary]>=3.1"
 ]
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+exclude = ["tests*", "docs*", "examples*"]
+
 [tool.pytest.ini_options]
 addopts = "-q"
-pythonpath = ["."]
+pythonpath = ["src"]
+
