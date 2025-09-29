@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "expressiondb"
+version = "0.1.0"
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+test = ["pytest>=8.2"]
+pg   = ["psycopg[binary]>=3.1"]
