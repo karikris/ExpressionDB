@@ -7,3 +7,12 @@ pg_wal/
 geo_cache/
 pg_stat_tmp/
 *.pid
+inspect_geo_output.py
+geo_leaf_to_expressiondb.R
+GEOExtract.py
+GEOfetch.py
+.gitignore
+.gitignore
+GEOtest.r
+GEOTransform.py
+test.R
