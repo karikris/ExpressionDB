@@ -1,10 +1,9 @@
-@'
 .vscode/
 .qodo/
 artefact*/
 artifacts/
 data/
 pg_wal/
+geo_cache/
 pg_stat_tmp/
 *.pid
-'@ | Out-File -Encoding UTF8 .gitignore
